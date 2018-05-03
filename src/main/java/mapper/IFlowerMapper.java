@@ -16,5 +16,7 @@ public interface IFlowerMapper {
 	@Select("select * from flower")
 	List<Flower> findAllFlowers();
 	
+	@Select("select * from flower where id=#{id}")
+	Flower findFlowerById(int id);
 	
 }

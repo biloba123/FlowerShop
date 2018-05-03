@@ -24,13 +24,13 @@ public class UserService {
 	@Transactional
 	public boolean register(User user) {
 		int cnt=mIUserMapper.addUser(user);
-		return cnt==0;
+		return cnt==1;
 	}
 	
 	@Transactional
 	public boolean updateInfo(User user) {
 		int cnt=mIUserMapper.updateUser(user);
-		return cnt==0;
+		return cnt==1;
 	}
 	
 }
