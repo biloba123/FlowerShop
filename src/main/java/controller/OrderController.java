@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import entity.CartItem;
 import entity.Flower;
+import entity.Order;
 import entity.User;
 import service.OrderService;
 import util.AccountUtil;
@@ -78,4 +79,40 @@ public class OrderController {
 		return "redirect:/Order/cart";
 	}
 	
+	@RequestMapping("/my-order")
+	public String myOrder(HttpSession session) {
+		User user=AccountUtil.getUser(session);
+		if(user==null) {
+			return AccountUtil.backToLogin(session, "请先登录");
+		}else {
+			List<Order> orders=mOrderService.getUserOrders(user.getId());
+			session.setAttribute("orders", orders);
+			return "order/my-order";
+		}
+	}
+	
+	@RequestMapping("/create-order")
+	public String createOrder(HttpSession session) {
+		List<CartItem> cItems=(List<CartItem>) session.getAttribute("cartItems");
+		if(cItems==null || cItems.size()<1) {
+			return "redirect:/Order/cart";
+		}
+		
+		mOrderService.createOrder(cItems);
+		return "redirect:/Order/my-order";
+	}
+	
+	@RequestMapping(value="/order-detail/{id}", method=RequestMethod.GET)
+	public String orderDetail(@PathVariable int id, HttpSession session) {
+		List<Order> orders=(List<Order>) session.getAttribute("orders");
+		for(Order order: orders) {
+			if(order.getId()==id) {
+				session.setAttribute("order", order);
+				break;
+			}
+		}
+		
+		session.setAttribute("orderItems", mOrderService.getOrderItems(id));
+		return "order/order-detail";
+	}
 }

@@ -9,9 +9,9 @@
 	<div id="menu">
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/Flower/">home</a></li>
-			<li><a href="<%=request.getContextPath()%>/Flower/">about us</a></li>
 			<li><a href="<%=request.getContextPath()%>/Flower/">flowers</a></li>
 			<li><a href="<%=request.getContextPath()%>/Flower/">specials gifts</a></li>
+			<li><a href="<%=request.getContextPath()%>/Order/my-order">my order</a></li>
 			<li><a href="<%=request.getContextPath()%>/Account/">my accout</a></li>
 			<li><a href="<%=request.getContextPath()%>/Account/register">register</a></li>
 			<li><a href="<%=request.getContextPath()%>/Flower/">prices</a></li>
