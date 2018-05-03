@@ -28,7 +28,9 @@
 		});
 		
 		$("#delete-btn").click(function() {
-			window.location.href="../delete-cart-item";;
+			if(confirm("确认删除该商品？")){
+				window.location.href="../delete-cart-item";;
+			}
 		});
 
 	});
