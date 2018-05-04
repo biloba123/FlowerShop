@@ -40,7 +40,13 @@ public interface IOrderMapper {
 	@Select("select * from orders where uid=#{uid}")
 	List<Order> findUserOrders(int uid);
 	
+	@Select("select * from orders")
+	List<Order> findAllOrders();
+	
 	@Select("select * from cartItem where oid=#{oid}  and state=1")
 	List<CartItem> findOrderItems(int oid);
+	
+	@Update("update orders set state=#{state} where id=#{id}")
+	int updateOrderState(Order order);
 
 }

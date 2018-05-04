@@ -13,11 +13,11 @@
 </head>
 <body>
 	<%
-		List<CartItem> cItems = (List<CartItem>) session.getAttribute("orderItems");
-		Order o = (Order) session.getAttribute("order");
+		List<CartItem> cItems = (List<CartItem>) session.getAttribute("m-orderItems");
+		Order o = (Order) session.getAttribute("m-order");
 	%>
 	<div id="wrap">
-		<%@ include file="../header.jsp"%>
+		<%@ include file="../manager-header.jsp"%>
 
 		<div class="center_content">
 			<div class="left_content">
@@ -99,9 +99,10 @@
 						</tbody>
 					</table>
 					<%
-						if (o.getState() == 1) {
+						if (o.getState() == 0) {
 					%>
-					<a href="../confirm-receipt/<%=o.getId()%>" class="checkout">receipt
+					<a href="../change/<%=o.getId()%>/-1" class="continue">&lt; cancel</a>
+					<a href="../change/<%=o.getId()%>/1" class="checkout">deliver
 						&gt;</a>
 					<%
 						}
@@ -110,7 +111,7 @@
 
 				<div class="clear"></div>
 			</div>
-			<%@ include file="../right-content.jsp"%>
+			<%@ include file="../manager-right-content.jsp"%>
 		</div>
 
 		<%@ include file="../footer.jsp"%>

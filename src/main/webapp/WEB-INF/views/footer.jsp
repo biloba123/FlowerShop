@@ -3,8 +3,8 @@
 
 <div class="footer">
 	<div class="left_footer">
-		<img src="<%=request.getContextPath()%>/img/footer_logo.gif" alt=""
-			title=""><br> <a
+		<a href="../Manager/"><img src="<%=request.getContextPath()%>/img/footer_logo.gif" alt=""
+			title=""></a><br> <a
 			href="http://csscreme.com/freecsstemplates/" title="free templates"><img
 			src="<%=request.getContextPath()%>/img/csscreme.gif"
 			alt="free templates" title="free templates" border="0"></a>

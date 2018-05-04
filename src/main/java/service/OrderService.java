@@ -79,10 +79,22 @@ public class OrderService {
 		return mIOrderMapper.findUserOrders(uid);
 	}
 	
+	public List<Order> getAllOrders() {
+		return mIOrderMapper.findAllOrders();
+	}
+	
 	public List<CartItem> getOrderItems(int oid){
 		List<CartItem> cItems=mIOrderMapper.findOrderItems(oid);
 		attachFlowerToCartItem(cItems);
 		return cItems;
+	}
+	
+	@Transactional
+	public boolean updateOrderState(int oid, int state) {
+		Order order=new Order();
+		order.setId(oid);
+		order.setState(state);
+		return mIOrderMapper.updateOrderState(order)==1;
 	}
 	
 	private void attachFlowerToCartItem(List<CartItem> cItems) {

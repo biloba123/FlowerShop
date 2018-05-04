@@ -14,6 +14,11 @@ public class Order {
 	private float total;
 	private String createTime;
 	
+	public static final int STATE_PAY=0;
+	public static final int STATE_SEND=1;
+	public static final int STATE_COMPLETE=2;
+	public static final int STATE_FAIL=-1;
+	
 	public Order() {
 		createTime=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 	}

@@ -115,4 +115,16 @@ public class OrderController {
 		session.setAttribute("orderItems", mOrderService.getOrderItems(id));
 		return "order/order-detail";
 	}
+	
+	@RequestMapping(value="/confirm-receipt/{id}", method=RequestMethod.GET)
+	public String confirmReceipt(@PathVariable int id, HttpSession session) {
+		if(mOrderService.updateOrderState(id, Order.STATE_COMPLETE)) {
+			Order order=(Order) session.getAttribute("order");
+			order.setState(Order.STATE_COMPLETE);
+		}
+		
+		return "redirect:/Order/order-detail/"+id;
+	}
+	
+	
 }

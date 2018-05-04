@@ -21,4 +21,16 @@ public class FlowerService {
 		return mIFlowerMapper.findAllFlowers();
 	}
 	
+	public boolean addFlower(Flower flower) {
+		return mIFlowerMapper.addFlower(flower)==1;
+	}
+	
+	public boolean updateFlower(Flower flower) {
+		return mIFlowerMapper.updateFlower(flower)==1;
+	}
+	
+	public boolean deleteFlower(int id) {
+		return mIFlowerMapper.deleteFlower(id)==1;
+	}
+	
 }
